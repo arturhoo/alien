@@ -126,40 +126,40 @@ module Alien
       @last      = new_tag.last
       @count    += new_tag.count
       @last_last = @last
-  =begin
-      # Update the speed, smooth it, calculate distance
-      dt = (@last - @last_last) * 86400.0
-      smooth_coef   = 5
-      smooth_factor = Math.exp(-smooth_coef*dt)
-      thresh_zero1  = -0.01 # Any speeds between these thresholds are considered 0
-      thresh_zero2  = +0.01
-      puts
-      #printf("\ndt=%0.000010f, smooth_factor(init)=%0.00005f\n", dt, smooth_factor)
+=begin
+    # Update the speed, smooth it, calculate distance
+    dt = (@last - @last_last) * 86400.0
+    smooth_coef   = 5
+    smooth_factor = Math.exp(-smooth_coef*dt)
+    thresh_zero1  = -0.01 # Any speeds between these thresholds are considered 0
+    thresh_zero2  = +0.01
+    puts
+    #printf("\ndt=%0.000010f, smooth_factor(init)=%0.00005f\n", dt, smooth_factor)
 
-      # Update the speed, smooth out jitter
-      @speed = new_tag.speed
-      if @speed.to_f > thresh_zero1 && @speed.to_f < thresh_zero2
-      # @speed = 0
-      end
+    # Update the speed, smooth out jitter
+    @speed = new_tag.speed
+    if @speed.to_f > thresh_zero1 && @speed.to_f < thresh_zero2
+    # @speed = 0
+    end
 
-      #printf("speed_smooth(initial)=%+0.003f\n", @speed_smooth)
-      @speed_smooth = @speed_smooth*smooth_factor + @speed.to_f*(1 - smooth_factor)
-      @pos_last     = @pos_smooth
-      @pos_smooth  += @speed_last * dt/1000
-      @speed_last   = @speed_smooth
+    #printf("speed_smooth(initial)=%+0.003f\n", @speed_smooth)
+    @speed_smooth = @speed_smooth*smooth_factor + @speed.to_f*(1 - smooth_factor)
+    @pos_last     = @pos_smooth
+    @pos_smooth  += @speed_last * dt/1000
+    @speed_last   = @speed_smooth
 
-      printf("speed=%+0.003f", @speed.to_s)
-      printf(", speed_smooth=%+0.003f", @speed_smooth.to_s)
-      printf(", pos=%+0.005f\n", @pos_smooth.to_s)
+    printf("speed=%+0.003f", @speed.to_s)
+    printf(", speed_smooth=%+0.003f", @speed_smooth.to_s)
+    printf(", pos=%+0.005f\n", @pos_smooth.to_s)
 
-      # Update new pos_min, if needed
-      @pos_min = @pos_smooth if (@pos_smooth < @pos_min)
-      printf("pos_last=%+0.5f, pos_min=%0.5f\n", @pos_last.to_s, @pos_min.to_s)
-      # If last position was the min and tag is moving away --> TopDeadCenter
-      if @pos_last == @pos_min && @pos_smooth > @pos_last
-        puts "********************************************"
-      end
-  =end
+    # Update new pos_min, if needed
+    @pos_min = @pos_smooth if (@pos_smooth < @pos_min)
+    printf("pos_last=%+0.5f, pos_min=%0.5f\n", @pos_last.to_s, @pos_min.to_s)
+    # If last position was the min and tag is moving away --> TopDeadCenter
+    if @pos_last == @pos_min && @pos_smooth > @pos_last
+      puts "********************************************"
+    end
+=end
     end
   end
 end

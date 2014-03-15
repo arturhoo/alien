@@ -10,8 +10,8 @@ This class uses a metaprogramming hack to dynamically build methods for many of 
 Copyright 2008, Alien Technology Corporation. All rights reserved.
 =end
 
-require 'alienconnection'
-require 'alientaglist'
+require File.join(File.dirname(__FILE__), 'alienconnection')
+require File.join(File.dirname(__FILE__), 'alientaglist')
 
 module Alien
   class AlienReader< AlienConnection
@@ -45,7 +45,7 @@ module Alien
             execute("#{cmd}?")
           else
             puts "sending val"
-            execute("#{cmd} [#{val}]?")
+            execute("#{cmd} [#{val.join}]?")
           end
         end
       }
@@ -55,7 +55,7 @@ module Alien
       method_name = (cmd+"=").to_sym
       self.class.instance_eval {
         send :define_method, method_name do |*val|
-          execute("#{cmd}=#{val}")
+          execute("#{cmd}=#{val.join}")
         end
       }
     end
@@ -67,7 +67,7 @@ module Alien
           if val.nil? || val.to_s.size==0
           	sendreceive("#{cmd}")
           else
-            sendreceive("#{cmd} #{val}")
+            sendreceive("#{cmd} #{val.join}")
           end
         end
       }
@@ -80,7 +80,7 @@ module Alien
           if val.nil? || val.to_s.size==0
             execute("#{cmd}")
           else
-            execute("#{cmd}=#{val}")
+            execute("#{cmd}=#{val.join}")
           end
         end
       }
