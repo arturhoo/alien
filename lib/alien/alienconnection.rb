@@ -98,7 +98,7 @@ module Alien
           raise "Not connected to reader."
         end
       rescue
-        err = "Error in alienconnection:\nTried to send:\"#{msg}\"\nand got:\n\"" + $! +"\""
+        err = "Error in alienconnection:\nTried to send:\"#{msg}\"\nand got:\n\"" + String($!) +"\""
         raise err
       end
     end
