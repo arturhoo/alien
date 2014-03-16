@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["arturhoo@gmail.com"]
   spec.summary       = %q{Interface to Alien Technology ARCA enabled readers.}
   spec.description   = %q{Ruby interface to Alien Technology ARCA enabled readers.}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/arturhoo/alien"
   spec.license       = "BSD"
 
   spec.files         = `git ls-files -z`.split("\x0")
