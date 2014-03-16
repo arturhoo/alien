@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Interface to Alien Technology ARCA enabled readers.}
   spec.description   = %q{Ruby interface to Alien Technology ARCA enabled readers.}
   spec.homepage      = ""
-  spec.license       = "MIT"
+  spec.license       = "BSD"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
