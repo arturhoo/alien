@@ -1,6 +1,6 @@
 # Alien
 
-Interface to Alien Technology ARCA enabled readers, patched to be compatible with Ruby 1.9.3
+Interface to Alien Technology ARCA enabled readers, patched to be compatible with Ruby from version 1.8.7 to 2.1
 
 ## Installation
 
