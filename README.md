@@ -1,5 +1,7 @@
 # Alien
 
+[![Gem Version](http://img.shields.io/gem/v/alien.svg)](https://rubygems.org/gems/alien)
+
 Interface to Alien Technology ARCA enabled readers, patched to be compatible with Ruby from version 1.8.7 to 2.1
 
 ## Installation
